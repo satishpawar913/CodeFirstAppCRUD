@@ -1,0 +1,88 @@
+﻿@model CodeFirstApproachCRUD.Models.Employee
+
+@{
+    ViewData["Title"] = "Add";
+}
+
+<div class="container mt-4">
+    <div class="card mx-auto" style="max-width: 600px;">
+        <div class="card-header">
+            <h3 class="text-center fw-bold">Add Employee</h3>
+        </div>
+        <div class="card-body">
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger">
+                    @TempData["ErrorMessage"]
+                </div>
+            }
+            <form asp-action="Add" method="post">
+                @Html.AntiForgeryToken()
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PostalCode" class="control-label"></label>
+                    <input asp-for="PostalCode" class="form-control" />
+                    <span asp-validation-for="PostalCode" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Country" class="control-label"></label>
+                    <select asp-for="Country" class="form-control">
+                        <option value="INDIA">INDIA</option>
+                        <option value="USA">USA</option>
+                        <option value="UK">UK</option>
+                        <option value="JAPAN">JAPAN</option>
+                        <option value="RUSSIA">RUSSIA</option>
+                        <option value="DUBAI">DUBAI</option>
+                    </select>
+                    <span asp-validation-for="Country" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PhoneNumber" class="control-label">Phone Number</label>
+                    <div class="input-group">
+                        <span class="input-group-text">+91</span>
+                        <input asp-for="PhoneNumber" class="form-control" placeholder="XXXXXXXXXX" />
+                    </div>
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="DeptId" class="control-label"></label>
+                    <select asp-for="DeptId" class="form-control" asp-items="ViewBag.DeptId"></select>
+                    <span asp-validation-for="DeptId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Gender" class="control-label"></label>
+                    <div>
+                        <label class="radio-inline">
+                            <input asp-for="Gender" type="radio" value="Male" /> Male
+                        </label>
+                        <label class="radio-inline">
+                            <input asp-for="Gender" type="radio" value="Female" /> Female
+                        </label>
+                    </div>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

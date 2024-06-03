@@ -1,0 +1,16 @@
+﻿@model CodeFirstApproachCRUD.Models.ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<h1 >Error</h1>
+<h2 >An error occurred while processing your request.</h2>
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <p class="text-danger">@Model.Message</p>
+}
+@* 
+<div class="card-footer text-center">
+    <a class="btn btn-secondary" asp-action="Index">Back to List</a>
+</div> *@

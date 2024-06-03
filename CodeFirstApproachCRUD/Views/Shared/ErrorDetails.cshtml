@@ -1,0 +1,17 @@
+﻿@model CodeFirstApproachCRUD.Models.ErrorViewModel
+@{
+    ViewData["Title"] = "Error Details";
+}
+
+<h1>Error Details</h1>
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <p class="text-danger"><strong>Error Message:</strong> @Model.Message</p>
+}
+
+@if (!string.IsNullOrEmpty(Model.StackTrace))
+{
+    <p><strong>Stack Trace:</strong></p>
+    <pre>@Model.StackTrace</pre>
+}
